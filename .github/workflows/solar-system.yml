@@ -6,6 +6,13 @@ on:
     branches:
       - main
       - 'feature/*'
+env:
+  - name: MONGO_URI
+    value: "mongodb+srv://supercluster.d83jj.mongodb.net/superData"
+  - name: MONGO_PASSWORD
+    value: ${{ secrets.MONGO_PASSWORD }}
+  - name: MONGO_USERNAME
+    value: ${{ vars.MONGO_USERNAME }}
     
 jobs:
     unit-testing:
@@ -31,3 +38,4 @@ jobs:
           with:
             name: Mocha-Test-Result
             path: test-results.xml
+
