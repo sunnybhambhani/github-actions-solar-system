@@ -32,3 +32,22 @@
             name: Mocha-Test-Result
             path: test-results.xml
 
+    code-coverage:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v4
+        name: Checkout Repository
+      - name: Setup NodeJS Version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm install
+        name: Install Dependencies
+      - continue-on-error: true
+        run: npm run coverage
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Code-Coverage-Result
+          path: coverage
+          retention-days: 5 
+
